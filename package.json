@@ -1,0 +1,81 @@
+{
+  "name": "jweb-editor",
+  "version": "0.1.0",
+  "displayName": "JWEB Editor",
+  "description": "An editor for JWEB literate programming files",
+  "categories": [
+    "Programming Languages"
+  ],
+  "keywords": [
+    "jweb",
+    "vscode",
+    "literate programming"
+  ],
+  "publisher": "matjp",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/matjp/jweb-editor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/matjp/jweb-editor/issues"
+  },
+  "engines": {
+    "vscode": "^1.15.0"
+  },
+  "activationEvents": [],
+  "main": "./out/main.js",
+  "contributes": {
+    "markdown.markdownItPlugins": true,
+    "configuration": {
+      "title": "JWEB",
+      "properties": {
+        "jweb.jtangle.printBanner.enabled": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Show a banner line."
+        },
+        "jweb.jtangle.showProgress.enabled": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Output a progress report."
+        },
+        "jweb.jtangle.printDebugInfo.enabled": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Output debug information."
+        },
+        "jweb.jtangle.reportNoErrors.enabled": {
+          "type": "boolean",
+          "default": true,
+          "markdownDescription": "Should lack of errors be announced."
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "@matjp/jweb": "^0.1.2",
+    "@types/markdown-it": "^12.2.3",
+    "@types/vscode": "^1.63.0",
+    "markdown-it": "^11.0.1",
+    "markdown-it-concat-code": "^1.0.0",
+    "markdown-it-front-matter": "^0.2.3",
+    "typescript": "^4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^14.18.0",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "esbuild": "^0.14.6",
+    "eslint": "^7.32.0"
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "esbuild-base": "esbuild ./out/src/extension.js --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
+    "esbuild": "npm run esbuild-base -- --sourcemap",
+    "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+    "test-compile": "tsc -p ./",
+    "compile": "tsc -p ./",
+    "lint": "eslint . --ext .ts,.tsx",
+    "watch": "tsc -watch -p ./"
+  }
+}
