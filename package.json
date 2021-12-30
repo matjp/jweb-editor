@@ -1,6 +1,6 @@
 {
   "name": "jweb-editor",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "displayName": "JWEB Editor",
   "description": "An editor for JWEB literate programming files",
   "categories": [
