@@ -49,11 +49,11 @@ module.exports.activate = (context: vscode.ExtensionContext) => {
 			const mdPath = mdUri.fsPath;
 			const cwd = path.parse(mdPath).dir;
 			const fn = path.parse(mdPath).name;	
-			const wFile = cwd + '\\' + fn + '.w';
+			const wFile = path.join(cwd, fn + '.w');
 			const wText = '@*\n' + src.value;
-			const outFile = cwd + '\\' + fn;
+			const outFile = path.join(cwd, fn);
 
-			let changeFile = cwd + '\\' + fn + '.ch';
+			let changeFile = path.join(cwd, fn + '.ch');
 			if (!fs.existsSync(changeFile)) changeFile = '-';
 	
 			fs.writeFileSync(wFile, wText);
