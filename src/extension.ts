@@ -43,6 +43,8 @@ module.exports.activate = (context: vscode.ExtensionContext) => {
 				if (debugInfo) flags += 's';
 				const reportNoErrors = jwebConfig.get('jtangle.reportNoErrors.enabled');
 				if (reportNoErrors) flags += 'h';
+				const outputComments = jwebConfig.get('jtangle.outputComments.enabled');
+				if (outputComments) flags += 'c';
 			};
 
 			const mdUri = doc.uri;

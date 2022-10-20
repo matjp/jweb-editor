@@ -48,6 +48,11 @@
           "type": "boolean",
           "default": true,
           "markdownDescription": "Should lack of errors be announced."
+        },
+        "jweb.jtangle.outputComments.enabled": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Include comments in the output file?"
         }
       }
     }
