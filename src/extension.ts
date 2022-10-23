@@ -32,19 +32,15 @@ module.exports.activate = (context: vscode.ExtensionContext) => {
 			md.use(concatCode.default, { lang: mdLang, separator: '\n@ \n'}, src)
 			md.parse(doc.getText(), {});
 
-			let flags = '';
+			let flagsOn = '+'; let flagsOff = '-';			
 			const jwebConfig = vscode.workspace.getConfiguration('jweb');
 			if (jwebConfig) {
-				const printBanner = jwebConfig.get('jtangle.printBanner.enabled');
-				if (printBanner) flags += 'b';
-				const showProgress = jwebConfig.get('jtangle.showProgress.enabled');
-				if (showProgress) flags += 'p';
-				const debugInfo = jwebConfig.get('jtangle.printDebugInfo.enabled');
-				if (debugInfo) flags += 's';
-				const reportNoErrors = jwebConfig.get('jtangle.reportNoErrors.enabled');
-				if (reportNoErrors) flags += 'h';
-				const outputComments = jwebConfig.get('jtangle.outputComments.enabled');
-				if (outputComments) flags += 'c';
+				if (jwebConfig.get('jtangle.printBanner.enabled')) { flagsOn += 'b' } else { flagsOff += 'b' };
+				if (jwebConfig.get('jtangle.showProgress.enabled')) { flagsOn += 'p' } else { flagsOff += 'p' };
+				if (jwebConfig.get('jtangle.printDebugInfo.enabled')) { flagsOn += 's' } else { flagsOff += 's' };
+				if (jwebConfig.get('jtangle.reportNoErrors.enabled')) { flagsOn += 'h' } else { flagsOff += 'h' };
+				if (jwebConfig.get('jtangle.outputComments.enabled')) { flagsOn += 'c' } else { flagsOff += 'c' };
+				if (jwebConfig.get('jtangle.outputSectionNumbers.enabled')) { flagsOn += 'n' } else { flagsOff += 'n' };
 			};
 
 			const mdUri = doc.uri;
@@ -61,7 +57,8 @@ module.exports.activate = (context: vscode.ExtensionContext) => {
 			fs.writeFileSync(wFile, wText);
 		  		
 			let params = [wFile, changeFile, mdLang, outFile];
-			if (flags.length > 0) params.unshift('+' + flags);
+			if (flagsOff.length > 1) params.unshift(flagsOff);
+			if (flagsOn.length > 1) params.unshift(flagsOn);
 
 			jtangle(params, outputChannel.appendLine);
 

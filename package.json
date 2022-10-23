@@ -52,7 +52,12 @@
         "jweb.jtangle.outputComments.enabled": {
           "type": "boolean",
           "default": false,
-          "markdownDescription": "Include comments in the output file?"
+          "markdownDescription": "Include comments in the output file."
+        },
+        "jweb.jtangle.outputSectionNumbers.enabled": {
+          "type": "boolean",
+          "default": false,
+          "markdownDescription": "Include section numbers in the output file."
         }
       }
     }
@@ -74,7 +79,7 @@
     "eslint": "^7.32.0"
   },
   "scripts": {
-    "vscode:prepublish": "npm run esbuild-base -- --minify",
+    "vscode:prepublish": "npm run compile && npm run esbuild-base -- --minify",
     "esbuild-base": "esbuild ./out/src/extension.js --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node",
     "esbuild": "npm run esbuild-base -- --sourcemap",
     "esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
