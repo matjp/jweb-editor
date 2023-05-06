@@ -3,12 +3,11 @@
     "version": "0.1.0",
     "configurations": [
         {
-            "name": "Launch Extension",
+            "name": "Launch JWEB Editor",
             "type": "extensionHost",
             "request": "launch",
             "runtimeExecutable": "${execPath}",
-            "args": ["--extensionDevelopmentPath=${workspaceRoot}" ],
-            "outFiles": [ "${workspaceRoot}/out/src/**/*.js" ],
+            "args": ["--extensionDevelopmentPath=${workspaceRoot:jweb-editor}" ],
             "preLaunchTask": "npm: vscode:prepublish"
         }
     ]
