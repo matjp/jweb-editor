@@ -1,6 +1,8 @@
-# JWEB Editor
+# JWEB VSCode Editor
 
 An editor for the [JWEB](https://github.com/matjp/jweb) system of Literate Programming.
+
+Note: I have migrated this extension to a new VS Code publisher account. Please uninstall any versions older than v0.1.5, then install the extension named [JWEB VSCode Editor](https://marketplace.visualstudio.com/items?itemName=mjpvs.jweb-vscode-editor).
 
 ![JWEB](./media/JWEB1.png)
 
