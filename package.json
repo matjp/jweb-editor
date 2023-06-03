@@ -1,7 +1,7 @@
 {
   "name": "jweb-vscode-editor",
   "version": "0.1.8",
-  "displayName": "JWEB Editor",
+  "displayName": "JWEB VSCode Editor",
   "description": "An editor for JWEB literate programming files",
   "categories": [
     "Programming Languages"
