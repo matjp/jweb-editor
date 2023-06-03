@@ -2,6 +2,8 @@
 
 An editor for the [JWEB](https://github.com/matjp/jweb) system of Literate Programming.
 
+![JWEB](./media/JWEB1.png)
+
 ## How it works
 
 The extension recognizes JWEB files as Markdown files having this tag at the beginning:
